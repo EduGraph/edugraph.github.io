@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Strukturiertes Wissen an Hochschulen</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="assets/img/edugraph-logo.png">
+
+
+    <link rel="stylesheet" href="assets/css/pygments/pygments.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/pygments/pygments14.css" type="text/css">
+
+
+    <!-- Piwik -->
+    <!--    <script type="text/javascript">
+            var _paq = _paq || [];
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+                var u="//bmake.th-brandenburg.de/apps/piwik/";
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['setSiteId', 2]);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <noscript><p><img src="//bmake.th-brandenburg.de/apps/piwik/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>-->
+    <!-- End Piwik Code -->
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <a class="navbar-brand" href="#">Strukturiertes Wissen an Hochschulen</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="hlcode">
+        <div class="syntax"><pre><span></span><span class="k">@prefix</span><span class="w"> </span><span class="nn">schema:</span><span class="w"> </span><span class="nv">&lt;http://schema.org/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"> </span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">thb:</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">rdf:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">rdfs:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span><span class="p">.</span><span class="w"></span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">dbr:</span><span class="w"> </span><span class="nv">&lt;http://de.dbpedia.org/resource/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">itcat:</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de/ns/itcat#&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">hrk:</span><span class="w"> </span><span class="nv">&lt;https://www.hrk.de/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+
+
+<span class="c">## Grundlegende Schema-Daten zur THB insgesamt</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">THB</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">CollegeOrUniversity</span><span class="w"> </span><span class="p">;</span><span class="w">  	</span><span class="c">## Es ist zu klären, welche URI für die THB zu verwenden ist.		</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">sameAs</span><span class="w"> </span><span class="nn">dbr:</span><span class="nt">Technische_Hochschule_Brandenburg</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c">## Aktuell wird unsere Hochschule noch als dbr:Fachhochschue_Brandenburg in der DBpedia geführt, sollte aber mit dem nächsten Release aktualisiert werden</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">url</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">	</span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">legalName</span><span class="w"> </span><span class="s">"Technische Hochschule Brandenburg"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">alternateName</span><span class="w"> </span><span class="s">"THB"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">location</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">address</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">department</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBW</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBI</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">ZIS</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">ZMPR</span><span class="w"> </span><span class="p">.</span><span class="w">  </span><span class="c">## Ggf. um weitere Untergliederungen ergänzen, URIs klären - idealerweise URIs gleich URLs im CMS</span><span class="w"></span>
+
+<span class="nn">thb:</span><span class="nt">address</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">PostalAddress</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">streetAddress</span><span class="w"> </span><span class="s">"Magdeburger Str. 50"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">postalCode</span><span class="w"> </span><span class="s">"14770"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">addressLocality</span><span class="w"> </span><span class="s">"Brandenburg an der Havel"</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+
+<span class="c">## Grundlegende Schema-Daten zu einer Untergliederung der THB, Beispiel: FBW</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">FBW</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">sameAs</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FachbereichWirtschaft</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c">## hier wäre ggf. die URL des FB im CMS einzusetzen</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">legalName</span><span class="w"> </span><span class="s">"Fachbereich Wirtschaft"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">alternateName</span><span class="w"> </span><span class="s">"FBW"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">description</span><span class="w"> </span><span class="s">"Beschreibung des Fachbereichs Wirtschaft"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">logo</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de/FBW/logo.png&gt;</span><span class="w">	</span><span class="p">;</span><span class="w"> </span><span class="c">## hier muss die Bildquelle referenziert werden; analog können andere Bilder mit schema:image gelistet werden</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">makesOffer</span><span class="w"> </span><span class="nn">itcat:</span><span class="nt">CloudServiceFBW</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="c">## Beispiel für einen IT-Dienst, der vom FBW angeboten wird.</span><span class="w"></span>
+
+<span class="c">## Grundlegende Schema-Daten zu einem Studiengang am Beispiel des Studiengangs Wirtschaftsinformatik Bachelor Vollzeit</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">WIB</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">Course</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">legalName</span><span class="w"> </span><span class="s">"Studiengang Wirtschaftsinformatik Bachelor"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">alternateName</span><span class="w"> </span><span class="s">"WIB"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Abkürzung</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">description</span><span class="w"> </span><span class="s">"Beschreibung des Studiengangs"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## aus Textfeld</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">provider</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBW</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Verweis auf den Fachbereich als Anbieter des Studiengangs</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCode</span><span class="w"> </span><span class="s">"WIB_VZ_THB"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## einheitlicher Schlüssel eines Studiengangs</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCredits</span><span class="w"> </span><span class="s">"180"</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c">## aus Eingabefeld</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCreditsUnit</span><span class="w"> </span><span class="s">"ECTS"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">about</span><span class="w"> </span><span class="s">"Wirtschaftsinformatik als Brücke zwischen Betriebswirtschaftslehre und Informatik"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## aus Textfeld</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">accountablePerson</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">johannse</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## hier: Verweis auf den Studiendekan</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">educationalAlignment</span><span class="w"> </span><span class="nn">hrk:</span><span class="nt">Bachelor</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">hrk:</span><span class="nt">AccredFIBAA</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Verweis auf Qualifikations- bzw. Akkreditierungsrahmen</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">inLanguage</span><span class="w"> </span><span class="s">"de"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Standard-Sprachcode</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">timeRequired</span><span class="w"> </span><span class="s">"P3Y"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Codierung einer Dauer von 3 Jahren</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">url</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de/FBW/WIB/&gt;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## URL des Studiengangs auf den Seiten des Fachbereichs</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">hasPart</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB_PM_PZMD</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB_PM_DBGR</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB_WM_AWIM</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Auflistung aller Module (Pflicht- und Wahlpflichtmodule) </span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">associatedMedia</span><span class="w">  </span><span class="nn">thb:</span><span class="nt">WIB_PO</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB_ModKat</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="c">## Auflistung aller konstituierenden Dokumente (Prüfungsordnung, Modulkatalog)</span><span class="w"></span>
+<span class="w">	</span>
+<span class="nn">hrk:</span><span class="nt">Bachelor</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">AlignmentObject</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">alignmentType</span><span class="w"> </span><span class="s">"Akademischer Abschluss"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">educationalFramework</span><span class="w"> </span><span class="s">"B.Sc."</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">"Bachelor of Science"</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="nn">hrk:</span><span class="nt">AccredFIBAA</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">AlignmentObject</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">alignmentType</span><span class="w"> </span><span class="s">"Akkreditierung"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">educationalFramework</span><span class="w"> </span><span class="s">"FIBAA-Akkreditierung"</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">	</span>
+<span class="c">## Grundlegende Schema-Daten zu einem Dokument am Beispiel der Prüfungsordnung für den Studiengang Wirtschaftsinformatik Bachelor</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">WIB_PO</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">DigitalDocument</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">headline</span><span class="w"> </span><span class="s">"Prüfungsordnung Wirtschaftsinformatik Bachelor"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">accountablePerson</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">johannse</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">description</span><span class="w"> </span><span class="s">"Definiert spezifischen Regeln und Vorgaben für den Studiengang Wirtschaftsinformatik Bachelor"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">publisher</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBW</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">dateCreated</span><span class="w"> </span><span class="s">"2007-09-01"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">dateModified</span><span class="w"> </span><span class="s">"2015-10-15"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">fileFormat</span><span class="w"> </span><span class="s">"PDF"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">inLanguage</span><span class="w"> </span><span class="s">"de"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">sameAs</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de/FBW/WIB/PO&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="c">## Grundlegende Schema-Daten zu einem Modul am Beispiel des Pflichtmoduls "Grundlagen der Prozessmodellierung", 2. Semester</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">WIB_PM_PZMD</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">Course</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">legalName</span><span class="w"> </span><span class="s">"Grundlagen der Prozessmodellierung"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">alternateName</span><span class="w"> </span><span class="s">"PZMD"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">description</span><span class="w"> </span><span class="s">"Beschreibung des Moduls"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">partOf</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Verweis auf den Studiengang - ggf. durch Inferenz ermittelbar</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCode</span><span class="w"> </span><span class="s">"WIB_PM_PZMD"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## formelles Kürzel</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCredits</span><span class="w"> </span><span class="s">"5"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCreditsUnit</span><span class="w"> </span><span class="s">"ECTS"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">about</span><span class="w"> </span><span class="s">"Modellierung von Geschäftsprozessen"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">accountablePerson</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">meisterv</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">wikarksi</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">inLanguage</span><span class="w"> </span><span class="s">"en"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">inLanguage</span><span class="w"> </span><span class="s">"de"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">timeRequired</span><span class="w"> </span><span class="s">"P150H"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">position</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Nr. des Semesters, in dem das Modul angeboten wird</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">url</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de/FBW/WIB/PZMD/&gt;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">associatedMedia</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB_ModDesc_PZMD</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">hasCourseInstance</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB_PM_PZMD_SoSe16</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Verweis auf die aktuelle Durchführung des Moduls</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">hasCourseInstance</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">WIB_PM_PZMD_SoSe15</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="c">## Verweis auf die vorherige Durchführung des Moduls</span><span class="w"></span>
+<span class="w">	</span>
+<span class="c">## Grundlegende Schema-Daten zu einer Modulinstanz am Beispiel des Pflichtmoduls "Grundlagen der Prozessmodellierung", Sommersemester 2016</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">WIB_PM_PZMD_SoSe16</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">CourseInstance</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">legalName</span><span class="w"> </span><span class="s">"Grundlagen der Prozessmodellierung, Sommersemester 2016"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">alternateName</span><span class="w"> </span><span class="s">"PZMD_SoSe16"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">description</span><span class="w"> </span><span class="s">"Beschreibung des Kurses"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCode</span><span class="w"> </span><span class="s">"WIB_PM_PZMD_SoSe2016"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## formelles Kürzel</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCredits</span><span class="w"> </span><span class="s">"5"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">courseCreditsUnit</span><span class="w"> </span><span class="s">"ECTS"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">about</span><span class="w"> </span><span class="s">"Modellierung von Geschäftsprozessen"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">instructor</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">meisterv</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">wikarksi</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">inLanguage</span><span class="w"> </span><span class="s">"en"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">inLanguage</span><span class="w"> </span><span class="s">"de"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">timeRequired</span><span class="w"> </span><span class="s">"P150H"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">position</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Nr. des Semesters, in dem das Modul angeboten wird</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">url</span><span class="w"> </span><span class="nv">&lt;http://moodle.th-brandenburg.de/WIB_PZMD_SoSe16/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="c">## Verweis auf die Moodle-Seite</span><span class="w"></span>
+<span class="w">	</span>
+<span class="c">## Grundlegende Schema-Daten zu einer Person am Beispiel des Studiendekans WI</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">johannse</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">Person</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">worksFor</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBW</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">familyName</span><span class="w"> </span><span class="s">"Johannsen"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">givenName</span><span class="w"> </span><span class="s">"Andreas"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">honoricPrefix</span><span class="w"> </span><span class="s">"Prof. Dr."</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">jobTitle</span><span class="w"> </span><span class="s">"Studiendekan Wirtschaftsinformatik"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">telephone</span><span class="w"> </span><span class="s">"xxx"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">email</span><span class="w"> </span><span class="s">"johannse@th-brandenburg.de"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">url</span><span class="w"> </span><span class="nv">&lt;http://th-brandenburg.de/johannse/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="c">## Verweis auf die Profilseite einer Person</span><span class="w"></span>
+<span class="w">	</span>
+<span class="c">## Grundlegende Schema-Daten zu einem Event am Beispiel der 29. Jahrestagung der AKWI</span><span class="w"></span>
+<span class="nn">thb:</span><span class="nt">Event_XYZ</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">Event</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">name</span><span class="w"> </span><span class="s">"29. Jahrestagung des AKWI"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">sameAs</span><span class="w"> </span><span class="nv">&lt;http://akwi2016.fh-brandenburg.de/&gt;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Verweis auf die Veranstaltungswebseite</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">organizer</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBW</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">contributor</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">meisterv</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">hoeding</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">wikarski</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">pfister</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">johannse</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">kelleri</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">## Beteiligte im Fachbereich</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">sponsor</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">FBW</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">THB</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">inLanguage</span><span class="w"> </span><span class="s">"de"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">startDate</span><span class="w"> </span><span class="s">"2016-09-11"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">endDate</span><span class="w"> </span><span class="s">"2016-09-14"</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">location</span><span class="w"> </span><span class="nn">thb:</span><span class="nt">address</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">description</span><span class="w"> </span><span class="s">"Kurzbeschreibung der Veranstaltung"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="nn">schema:</span><span class="nt">image</span><span class="w"> </span><span class="nv">&lt;http://akwi2016.fh-brandenburg.de/Bild.png&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="c">## Verweis auf ein Bild/Logo zur Veranstaltung</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+</pre></div>
+
+    </div>
+
+
+</div>
+
+
+<script src="download/Pygments%20—%20Pygments_files/doctools.js"></script>
+<script src="download/Pygments%20—%20Pygments_files/underscore.js"></script>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+
+</body>
+</html>

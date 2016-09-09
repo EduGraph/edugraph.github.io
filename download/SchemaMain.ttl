@@ -1,0 +1,139 @@
+@prefix schema: <http://schema.org/> . 
+@prefix thb: <http://th-brandenburg.de/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dbr: <http://de.dbpedia.org/resource/> .
+@prefix itcat: <http://th-brandenburg.de/ns/itcat#> .
+@prefix hrk: <https://www.hrk.de/> .
+
+
+## Grundlegende Schema-Daten zur THB insgesamt
+thb:THB a schema:CollegeOrUniversity ;  	## Es ist zu klären, welche URI für die THB zu verwenden ist.		
+	schema:sameAs dbr:Technische_Hochschule_Brandenburg ;  ## Aktuell wird unsere Hochschule noch als dbr:Fachhochschue_Brandenburg in der DBpedia geführt, sollte aber mit dem nächsten Release aktualisiert werden
+	schema:url <http://th-brandenburg.de> ;	
+	schema:legalName "Technische Hochschule Brandenburg" ;
+	schema:alternateName "THB" ;
+	schema:location thb:address ;
+	schema:department thb:FBW , thb:FBI , thb:FBT , thb:ZIS , thb:ZMPR .  ## Ggf. um weitere Untergliederungen ergänzen, URIs klären - idealerweise URIs gleich URLs im CMS
+
+thb:address a schema:PostalAddress ;
+	schema:streetAddress "Magdeburger Str. 50" ;
+	schema:postalCode "14770" ;
+	schema:addressLocality "Brandenburg an der Havel" .
+
+## Grundlegende Schema-Daten zu einer Untergliederung der THB, Beispiel: FBW
+thb:FBW schema:sameAs thb:FachbereichWirtschaft ;  ## hier wäre ggf. die URL des FB im CMS einzusetzen
+	schema:legalName "Fachbereich Wirtschaft" ;
+	schema:alternateName "FBW" ;
+	schema:description "Beschreibung des Fachbereichs Wirtschaft" ;
+	schema:logo <http://th-brandenburg.de/FBW/logo.png>	; ## hier muss die Bildquelle referenziert werden; analog können andere Bilder mit schema:image gelistet werden
+	schema:makesOffer itcat:CloudServiceFBW . ## Beispiel für einen IT-Dienst, der vom FBW angeboten wird.
+
+## Grundlegende Schema-Daten zu einem Studiengang am Beispiel des Studiengangs Wirtschaftsinformatik Bachelor Vollzeit
+thb:WIB a schema:Course ;
+	schema:legalName "Studiengang Wirtschaftsinformatik Bachelor" ;
+	schema:alternateName "WIB" ; ## Abkürzung
+	schema:description "Beschreibung des Studiengangs" ; ## aus Textfeld
+	schema:provider thb:FBW ; ## Verweis auf den Fachbereich als Anbieter des Studiengangs
+	schema:courseCode "WIB_VZ_THB" ; ## einheitlicher Schlüssel eines Studiengangs
+	schema:courseCredits "180" ;  ## aus Eingabefeld
+	schema:courseCreditsUnit "ECTS" ;
+	schema:about "Wirtschaftsinformatik als Brücke zwischen Betriebswirtschaftslehre und Informatik" ; ## aus Textfeld
+	schema:accountablePerson thb:johannse ; ## hier: Verweis auf den Studiendekan
+	schema:educationalAlignment hrk:Bachelor , hrk:AccredFIBAA ; ## Verweis auf Qualifikations- bzw. Akkreditierungsrahmen
+	schema:inLanguage "de" ; ## Standard-Sprachcode
+	schema:timeRequired "P3Y" ; ## Codierung einer Dauer von 3 Jahren
+	schema:url <http://th-brandenburg.de/FBW/WIB/> ; ## URL des Studiengangs auf den Seiten des Fachbereichs
+	schema:hasPart thb:WIB_PM_PZMD , thb:WIB_PM_DBGR , thb:WIB_WM_AWIM ; ## Auflistung aller Module (Pflicht- und Wahlpflichtmodule) 
+	schema:associatedMedia  thb:WIB_PO , thb:WIB_ModKat . ## Auflistung aller konstituierenden Dokumente (Prüfungsordnung, Modulkatalog)
+	
+hrk:Bachelor a schema:AlignmentObject ;
+	schema:alignmentType "Akademischer Abschluss" ;
+	schema:educationalFramework "B.Sc." , "Bachelor of Science" .
+hrk:AccredFIBAA a schema:AlignmentObject ;
+	schema:alignmentType "Akkreditierung" ;
+	schema:educationalFramework "FIBAA-Akkreditierung" .
+	
+## Grundlegende Schema-Daten zu einem Dokument am Beispiel der Prüfungsordnung für den Studiengang Wirtschaftsinformatik Bachelor
+thb:WIB_PO a schema:DigitalDocument ;
+	schema:headline "Prüfungsordnung Wirtschaftsinformatik Bachelor" ;
+	schema:accountablePerson thb:johannse ;
+	schema:description "Definiert spezifischen Regeln und Vorgaben für den Studiengang Wirtschaftsinformatik Bachelor" ;
+	schema:publisher thb:FBW ;
+	schema:dateCreated "2007-09-01" ;
+	schema:dateModified "2015-10-15" ;
+	schema:fileFormat "PDF" ;
+	schema:inLanguage "de" ;
+	schema:sameAs <http://th-brandenburg.de/FBW/WIB/PO> .
+	
+	
+## Grundlegende Schema-Daten zu einem Modul am Beispiel des Pflichtmoduls "Grundlagen der Prozessmodellierung", 2. Semester
+thb:WIB_PM_PZMD a schema:Course ;
+	schema:legalName "Grundlagen der Prozessmodellierung" ;
+	schema:alternateName "PZMD" ;
+	schema:description "Beschreibung des Moduls" ;
+	schema:partOf thb:WIB ; ## Verweis auf den Studiengang - ggf. durch Inferenz ermittelbar
+	schema:courseCode "WIB_PM_PZMD" ; ## formelles Kürzel
+	schema:courseCredits "5" ; 
+	schema:courseCreditsUnit "ECTS" ;
+	schema:about "Modellierung von Geschäftsprozessen" ;
+	schema:accountablePerson thb:meisterv , thb:wikarksi ;
+	schema:inLanguage "en" ;
+	schema:inLanguage "de" ;
+	schema:timeRequired "P150H" ;
+	schema:position 2 ; ## Nr. des Semesters, in dem das Modul angeboten wird
+	schema:url <http://th-brandenburg.de/FBW/WIB/PZMD/> ;
+	schema:associatedMedia thb:WIB_ModDesc_PZMD ;
+	schema:hasCourseInstance thb:WIB_PM_PZMD_SoSe16 ; ## Verweis auf die aktuelle Durchführung des Moduls
+	schema:hasCourseInstance thb:WIB_PM_PZMD_SoSe15 . ## Verweis auf die vorherige Durchführung des Moduls
+	
+## Grundlegende Schema-Daten zu einer Modulinstanz am Beispiel des Pflichtmoduls "Grundlagen der Prozessmodellierung", Sommersemester 2016
+thb:WIB_PM_PZMD_SoSe16 a schema:CourseInstance ;
+	schema:legalName "Grundlagen der Prozessmodellierung, Sommersemester 2016" ;
+	schema:alternateName "PZMD_SoSe16" ;
+	schema:description "Beschreibung des Kurses" ;
+	schema:courseCode "WIB_PM_PZMD_SoSe2016" ; ## formelles Kürzel
+	schema:courseCredits "5" ; 
+	schema:courseCreditsUnit "ECTS" ;
+	schema:about "Modellierung von Geschäftsprozessen" ;
+	schema:instructor thb:meisterv , thb:wikarksi ;
+	schema:inLanguage "en" ;
+	schema:inLanguage "de" ;
+	schema:timeRequired "P150H" ;
+	schema:position 2 ; ## Nr. des Semesters, in dem das Modul angeboten wird
+	schema:url <http://moodle.th-brandenburg.de/WIB_PZMD_SoSe16/> . ## Verweis auf die Moodle-Seite
+	
+## Grundlegende Schema-Daten zu einer Person am Beispiel des Studiendekans WI
+thb:johannse a schema:Person ;
+	schema:worksFor thb:FBW ; 
+	schema:familyName "Johannsen" ;
+	schema:givenName "Andreas" ;
+	schema:honoricPrefix "Prof. Dr." ;
+	schema:jobTitle "Studiendekan Wirtschaftsinformatik" ;
+	schema:telephone "xxx" ;
+	schema:email "johannse@th-brandenburg.de" ;
+	schema:url <http://th-brandenburg.de/johannse/> . ## Verweis auf die Profilseite einer Person
+	
+## Grundlegende Schema-Daten zu einem Event am Beispiel der 29. Jahrestagung der AKWI
+thb:Event_XYZ a schema:Event ;
+	schema:name "29. Jahrestagung des AKWI" ;
+	schema:sameAs <http://akwi2016.fh-brandenburg.de/> ; ## Verweis auf die Veranstaltungswebseite
+	schema:organizer thb:FBW ;
+	schema:contributor thb:meisterv , thb:hoeding , thb:wikarski , thb:pfister , thb:johannse , thb:kelleri ; ## Beteiligte im Fachbereich
+	schema:sponsor thb:FBW , thb:THB ;
+	schema:inLanguage "de" ;
+	schema:startDate "2016-09-11" ;
+	schema:endDate "2016-09-14" ;
+	schema:location thb:address ;
+	schema:description "Kurzbeschreibung der Veranstaltung" ; 
+	schema:image <http://akwi2016.fh-brandenburg.de/Bild.png> . ## Verweis auf ein Bild/Logo zur Veranstaltung
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

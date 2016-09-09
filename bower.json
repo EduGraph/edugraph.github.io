@@ -9,6 +9,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.4"
+    "bootstrap": "4.0.0-alpha.4",
+    "highlightjs": "^9.6.0",
+    "font-awesome": "fontawesome#^4.6.3"
   }
 }
